@@ -1,14 +1,23 @@
-Start with simple low-level scripting language: floats, ints, booleans, pointers
-Add preprocessor for good macros -- macro anything
-Add ability to call system functions
-Build runtime object layer in Haste
+Haste Language
+==============
 
+Goals: 
 
-Object-oriented
-Automatic reference counting with GC
-Multiple inheritance 
+* Simple, lightweight, general-purpose, object-oriented language that still runs fast enough to avoid switching to C/C++
+* Compile or JIT to native code via [LLVM](http://llvm.org/)
+* Bootstrap early and don't look back
+* Eventually incorporate great language features that fit in the goals of the language
+* Concurrency built in -- make it easier and as fool-proof as possible
 
-Build with pointers, can then write entire runtime in itself
+Development Goals:
+
+* Start with simple low-level scripting language: floats, ints, booleans, pointers, etc.
+* Add preprocessor for a good macro system
+* Add ability to link native libraries and call native functions in them -- no need to use C to interact with a C library
+* Bootstrap early by making all library functions be written in native haste with external methods
+* Build object model in native Haste
+
+# Random Scribblings that I haven't promoted to Markdown
 
 Native types:
 

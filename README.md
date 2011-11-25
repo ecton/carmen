@@ -1,4 +1,4 @@
-Haste Language
+Carmen Language
 ==============
 
 Goals: 
@@ -14,8 +14,8 @@ Development Goals:
 * Start with simple low-level scripting language: floats, ints, booleans, pointers, etc.
 * Add preprocessor for a good macro system
 * Add ability to link native libraries and call native functions in them -- no need to use C to interact with a C library
-* Bootstrap early by making all library functions be written in native haste with external methods
-* Build object model in native Haste
+* Bootstrap early by making all library functions be written in native Carmen with external methods
+* Build object model in native Carmen
 
 # Random Scribblings that I haven't promoted to Markdown
 

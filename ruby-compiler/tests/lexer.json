@@ -1,0 +1,25 @@
+{
+  "component": "lexer",
+  "tests": [
+    {
+      "name": "Identifiers",
+      "input": "a z0 c0123456789_-c ünicode",
+      "output": "IDENTIFIER["a",0:0,1] IDENTIFIER["z0",0:2,2] IDENTIFIER["c0123456789_-c",0:5,14] IDENTIFIER["ünicode",0:20,7]"
+    },
+    {
+      "name": "Whitespace Test 1",
+      "input": "a\t b c\td  e",
+      "output": "IDENTIFIER["a",0:0,1] IDENTIFIER["b",0:3,1] IDENTIFIER["c",0:5,1] IDENTIFIER["d",0:7,1] IDENTIFIER["e",0:10,1]"
+    },
+    {
+      "name": "Numerics",
+      "input": "1 10 99.0 99.1 99.00 12a 13.",
+      "output": "NUMERIC["1",0:0,1] NUMERIC["10",0:2,2] NUMERIC["99.0",0:5,4] NUMERIC["99.1",0:10,4] NUMERIC["99.00",0:15,5] NUMERIC["12",0:21,2] IDENTIFIER["a",0:23,1] NUMERIC["13",0:25,2] OP[".",0:27,1]"
+    },
+    {
+      "name": "Newlines and Punctuation",
+      "input": "a.b\nb = 5\r\nc += a-b",
+      "output": "IDENTIFIER["a",0:0,1] OP[".",0:1,1] IDENTIFIER["b",0:2,1] EOL["\n",0:3,1] IDENTIFIER["b",0:4,1] OP["=",0:6,1] NUMERIC["5",0:8,1] EOL["\n",0:9,1] IDENTIFIER["c",0:10,1] OP["+",0:12,1] OP["=",0:13,1] IDENTIFIER["a-b",0:15,3]"
+    }
+  ]
+}

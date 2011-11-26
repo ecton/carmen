@@ -1,0 +1,29 @@
+require 'rubygems'
+require 'bundler'
+require 'json'
+
+require './lexer.rb'
+
+task :test do
+  testdir = File.join(File.dirname(__FILE__), "tests")
+  tests = Dir[File.join(testdir, "*.json")]
+  tests.each do |testfile|
+    testdef = JSON.parse(open(testfile).read)
+    case testdef['component']
+    when 'lexer'
+      testdef['tests'].each do |test|
+        puts "Testing #{test['name']}"
+        
+        lex = Lexer.new(test['name'], test['input'])
+        result = lex.tokens.collect{|t| t.to_s}.join(" ")
+        if test['output'] != result
+          puts "- FAILED"
+          puts "- Expected: #{test['output']}"
+          puts "- Received: #{result}"
+        end
+      end
+    else
+      puts "Unknown test component #{testdef['type']}"
+    end
+  end
+end
